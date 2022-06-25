@@ -13,5 +13,5 @@ prices = re.findall("<span class=\"price\">\n\s*<span>\$(.*)<\/span>", datastrin
 for price in prices:
     price = price.replace(",", "")
     print(price)
-
+hi
 #Nathan's comment
