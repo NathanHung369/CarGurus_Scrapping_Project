@@ -5,5 +5,3 @@ import re
 
 print("hi")
 
-#cool code
-#dorothy's code
