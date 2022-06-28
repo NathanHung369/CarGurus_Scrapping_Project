@@ -49,9 +49,9 @@ for i in range(0, len(jsonDataObject)):
         totalOptions += 1
 
 #Inserts new data into db
-cursor.execute("Insert into Listings (listingid, caryear, mileage, price, daysonmarket, accidentcount, ownercount, transmission, exteriorcolor) Select d.listingid, d.caryear, d.mileage, d.price, d.daysonmarket, d.accidentcount, d.ownercount, d.transmission, d.exteriorcolor from DayListings d left outer join Listings l on d.ListingID = l.ListingID;")
+cursor.execute("Insert into Listings (listingid, caryear, mileage, price, daysonmarket, accidentcount, ownercount, transmission, exteriorcolor) Select d.listingid, d.caryear, d.mileage, d.price, d.daysonmarket, d.accidentcount, d.ownercount, d.transmission, d.exteriorcolor from DayListings d left join Listings l on d.ListingID = l.ListingID where l.ListingID is null;")
 conn.commit()
-cursor.execute("Insert into Options (OptionID, ListingID, Option) Select d.OptionID, d.ListingID, d.Option from DayOptions d left outer join Options l on d.OptionID = l.OptionID")
+cursor.execute("Insert into Options (OptionID, ListingID, Option) Select d.OptionID, d.ListingID, d.Option from DayOptions d left join Options l on d.OptionID = l.OptionID where d.listingID not in(select listingID from listings);")
 conn.commit()
 cursor.execute("Delete from DayOptions")
 conn.commit()
