@@ -1,5 +1,8 @@
-drop if exists table Listings;
-drop if exists table DayListings;
+drop table if exists Options;
+drop table if exists DayOptions;
+drop table if exists Listings;
+drop table if exists DayListings;
+
 
 create table Listings(
     ListingID int primary key,
@@ -10,7 +13,9 @@ create table Listings(
     AccidentCount int,
     OwnerCount int,
     Transmission varchar(255),
-    ExteriorColor varchar(255)
+    ExteriorColor varchar(255),
+    listingdate date,
+    model varchar(255)
 );
 
 create table DayListings(
@@ -22,7 +27,8 @@ create table DayListings(
     AccidentCount int,
     OwnerCount int,
     Transmission varchar(255),
-    ExteriorColor varchar(255)
+    ExteriorColor varchar(255),
+    model varchar(255)
 );
 
 
