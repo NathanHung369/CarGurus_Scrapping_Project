@@ -76,6 +76,9 @@ for k in range(0, len(links)):
 
     cursor.execute("Insert into Options (OptionID, ListingID, Option) Select d.OptionID, d.ListingID, d.Option from DayOptions d join (Select a.listingid from DayListings a left join Listings b on a.ListingID = b.ListingID where b.ListingID is null) l on d.ListingID = l.ListingID;")
     conn.commit()
+
+    cursor.execute("update listings set daysonmarket = (select daysonmarket from daylistings where listings.ListingID = daylistings.ListingID) From dayListings where Listings.ListingID = dayListings.ListingID")
+    conn.commit()
     cursor.execute("Delete from DayOptions")
     conn.commit()
     cursor.execute("Delete from DayListings")
