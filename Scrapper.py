@@ -4,6 +4,7 @@ import urllib.parse as up
 import pandas as pd
 import re
 import urllib3
+
 def testNull(key):
     try:
         data = carYear = str(listing[key])
