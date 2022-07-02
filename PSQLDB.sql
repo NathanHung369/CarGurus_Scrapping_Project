@@ -15,7 +15,8 @@ create table Listings(
     Transmission varchar(255),
     ExteriorColor varchar(255),
     listingdate date,
-    model varchar(255)
+    model varchar(255),
+    insertDate date
 );
 
 create table DayListings(

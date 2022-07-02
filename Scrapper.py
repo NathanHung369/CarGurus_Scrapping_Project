@@ -4,6 +4,8 @@ import urllib.parse as up
 import pandas as pd
 import re
 import urllib3
+from Alerts import email_alert
+from datetime import date
 
 def testNull(key):
     try:
@@ -26,6 +28,7 @@ conn.commit()
 cursor.execute("Delete from DayListings")
 conn.commit()
 
+today = date.today()
 totalOptions = 0
 totalListings = 0
 #Scrape Data and load in JSON object
@@ -72,7 +75,7 @@ for k in range(0, len(links)):
             totalOptions += 1
 
     #Inserts new data into db
-    cursor.execute("Insert into Listings (listingid, caryear, mileage, price, daysonmarket, accidentcount, ownercount, transmission, exteriorcolor, listingdate, model) Select d.listingid, d.caryear, d.mileage, d.price, d.daysonmarket, d.accidentcount, d.ownercount, d.transmission, d.exteriorcolor, current_date, d.model from DayListings d left join Listings l on d.ListingID = l.ListingID where l.ListingID is null;")
+    cursor.execute("Insert into Listings (listingid, caryear, mileage, price, daysonmarket, accidentcount, ownercount, transmission, exteriorcolor, listingdate, model, insertDate) Select d.listingid, d.caryear, d.mileage, d.price, d.daysonmarket, d.accidentcount, d.ownercount, d.transmission, d.exteriorcolor, current_date, d.model, current_date from DayListings d left join Listings l on d.ListingID = l.ListingID where l.ListingID is null;")
     conn.commit()   
 
     cursor.execute("Insert into Options (OptionID, ListingID, Option) Select d.OptionID, d.ListingID, d.Option from DayOptions d join (Select a.listingid from DayListings a left join Listings b on a.ListingID = b.ListingID where b.ListingID is null) l on d.ListingID = l.ListingID;")
