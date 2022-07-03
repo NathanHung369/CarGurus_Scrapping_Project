@@ -88,7 +88,8 @@ for k in range(0, len(links)):
     cursor.execute("Delete from DayListings")
     conn.commit()
 
-
+cursor.execute("update listings set listingdate = current_date-daysonmarket")
+conn.commit()
 cursor .close()
 conn.close()
 print("found "+ str(totalListings)+" listings and "+ str(totalOptions) + " options")
