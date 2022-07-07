@@ -46,5 +46,7 @@ create table DayOptions(
     Option varchar(255),
     FOREIGN KEY(ListingID) REFERENCES DayListings(ListingID)
 );
-
-
+--made in heroku postgres 2
+create table Regression(
+    value var1 int
+)

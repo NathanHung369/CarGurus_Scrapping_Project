@@ -89,7 +89,7 @@ if __name__ == '__main__':
     conn.close()
 
     featuredBody = f"There is {featuredCount} listing(s) that are below ${maxPrice} and {maxMiles} miles.\n"
-    partition = "________________________________________________________________________________________\n"
+    partition = "_______________________________________________\n"
     listings.insert(0, featuredBody)
     listings.insert(1, " ".join(featured))
     listings.insert(2, partition)

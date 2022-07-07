@@ -78,6 +78,10 @@ for c in range(0, 2):
                 totalOptions += 1
 
         #Inserts new data into db
+        cursor.execute("Delete from DayOptions")
+        conn.commit()
+        cursor.execute("Delete from DayListings")
+        conn.commit()
         cursor.execute("Insert into Listings (listingid, caryear, mileage, price, daysonmarket, accidentcount, ownercount, transmission, exteriorcolor, listingdate, model, insertDate) Select d.listingid, d.caryear, d.mileage, d.price, d.daysonmarket, d.accidentcount, d.ownercount, d.transmission, d.exteriorcolor, current_date, d.model, current_date from DayListings d left join Listings l on d.ListingID = l.ListingID where l.ListingID is null;")
         conn.commit()   
 
@@ -86,12 +90,14 @@ for c in range(0, 2):
 
         cursor.execute("update listings set daysonmarket = (select daysonmarket from daylistings where listings.ListingID = daylistings.ListingID) From dayListings where Listings.ListingID = dayListings.ListingID")
         conn.commit()
+        cursor.execute("update listings set listingdate = current_date-dayListings.daysonmarket From dayListings where Listings.ListingID = dayListings.ListingID")
+        conn.commit()
         cursor.execute("Delete from DayOptions")
         conn.commit()
         cursor.execute("Delete from DayListings")
         conn.commit()
 
-    cursor.execute("update listings set listingdate = current_date-daysonmarket")
+    #cursor.execute("update listings set listingdate = current_date-daysonmarket")
     conn.commit()
     cursor .close()
     conn.close()
