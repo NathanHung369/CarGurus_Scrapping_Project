@@ -78,10 +78,7 @@ for c in range(0, 2):
                 totalOptions += 1
 
         #Inserts new data into db
-        cursor.execute("Delete from DayOptions")
-        conn.commit()
-        cursor.execute("Delete from DayListings")
-        conn.commit()
+        
         cursor.execute("Insert into Listings (listingid, caryear, mileage, price, daysonmarket, accidentcount, ownercount, transmission, exteriorcolor, listingdate, model, insertDate) Select d.listingid, d.caryear, d.mileage, d.price, d.daysonmarket, d.accidentcount, d.ownercount, d.transmission, d.exteriorcolor, current_date, d.model, current_date from DayListings d left join Listings l on d.ListingID = l.ListingID where l.ListingID is null;")
         conn.commit()   
 

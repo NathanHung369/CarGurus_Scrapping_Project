@@ -6,6 +6,7 @@ import urllib.parse as up
 import pandas as pd
 import json
 from datetime import date
+import ssl
 def email_alert(subject, body, to):
     msg = EmailMessage()
     msg.set_content(body)
@@ -15,13 +16,13 @@ def email_alert(subject, body, to):
 
     user = 'nathan.project.alerts@gmail.com'
     msg['from'] = user
-    password = 'apjqhpveglkigdua'
-
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
+    password = 'okjgfadmakfznaaq'
+    context = ssl.create_default_context()
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
+   
     server.login(user, password)
     server.send_message(msg)
-    server.quit()
+  
 
 if __name__ == '__main__':
     maxPrice = 30000
