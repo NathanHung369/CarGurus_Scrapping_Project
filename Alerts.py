@@ -20,6 +20,10 @@ def email_alert(subject, body, to):
     context = ssl.create_default_context()
     server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
    
+    password = ''
+
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
     server.login(user, password)
     server.send_message(msg)
   
