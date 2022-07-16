@@ -16,7 +16,10 @@ import statsmodels.api as sm
 #Connect to Database and convert relevent data into a DataFrame
 #Connect to Database
 parentDir = os.path.dirname(os.getcwd())
-cred = json.load(open(parentDir+'/PSQLCredentials.json'))
+#path = parentDir+'/PSQLCredentials.json'
+path = parentDir+'trader33drakor/PSQLCredentials.json'
+
+cred = json.load(open(path))
 url = up.urlparse(cred[1]['connString'])
 conn = psycopg2.connect(database=url.path[1:], user=url.username, password=url.password, host=url.hostname, port=url.port )
 cursor  = conn.cursor()
