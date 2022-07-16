@@ -48,5 +48,10 @@ create table DayOptions(
 );
 --made in heroku postgres 2
 create table Regression(
-    value var1 int
+    ModelID SERIAL primary key,
+    insertDate date, 
+    yearCoef decimal,
+    mileageCoef decimal,
+    makerCoef decimal,
+    intercept decimal
 )
