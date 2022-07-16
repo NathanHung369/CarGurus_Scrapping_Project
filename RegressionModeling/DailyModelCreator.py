@@ -17,7 +17,7 @@ import statsmodels.api as sm
 #Connect to Database
 parentDir = os.path.dirname(os.getcwd())
 #path = parentDir+'/PSQLCredentials.json'
-path = parentDir+'trader33drakor/PSQLCredentials.json'
+path = parentDir+'/trader33drakor/PSQLCredentials.json'
 
 cred = json.load(open(path))
 url = up.urlparse(cred[1]['connString'])
