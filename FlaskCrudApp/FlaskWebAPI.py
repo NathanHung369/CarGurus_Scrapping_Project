@@ -46,8 +46,8 @@ def submit():
     cursor.execute("select * from regression order by modelid desc limit 1")
     conn.commit() 
     data = cursor.fetchall()
-    yearcoef = float(data[0][2])
-    mileagecoef = float(data[0][3])
+    yearcoef = int(data[0][2])
+    mileagecoef = int(data[0][3])
     makercoef = float(data[0][4])
     intercept = float(data[0][5])
 
@@ -68,7 +68,7 @@ def submit():
 #refresh with answer
 @app.route('/success/<price>, <year>, <mileage>, <maker>')
 def success(price, year, mileage, maker):
-    return render_template('showPrice.html', price = price, year = year, mileage = mileage, maker = maker)
+    return render_template('showPrice.html', price = price, year = str(year), mileage = mileage, maker = maker)
 
 
 if __name__ == "__main__":

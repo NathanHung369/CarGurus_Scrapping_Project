@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lan="en">
-    {% extends 'layouts.html' %}
-    {%block content%}
+
 <head>
     <meta charset = "UTF-8">
     <title>Flask App</title>
@@ -15,9 +14,9 @@
     <form action="/submit" method='post'>
     
         <lable for="Year"> Year:  </lable>
-        <input type="text" value = "{{year}}" id="year" name="Year">
+        <input type="text" value = "" id="year" name="Year">
         <lable for="Mileage"> Mileage:  </lable>
-        <input type="text" value="{{mileage}}" id="mileage" name = "Mileage">
+        <input type="text" value="" id="mileage" name = "Mileage">
 
         <label for="maker">Choose a maker:</label>
 
@@ -30,7 +29,7 @@
     </form>
  
   
-    <h3 id = 'test'>price is {{price}}</h3>
+    <h3 id = 'test'>price is </h3>
 </body>
 
 </html>
@@ -41,5 +40,76 @@
     
   
 </script>
+    
+-->
+
+
+    <!doctype html>
+    {% extends 'layouts.html' %}
+        {%block content%}
+    <html lang="en">
+        
+      <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+        <title>Flask App</title>
+      </head>
+      <body>
+       
+       
+        <h1 class="text-center" style="color: gray">Car Price Estimator</h1>
+    
+        <form action="/submit" method="post" class="p-5">
+      
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="inputCity">Year</label>
+                <select id="inputState" class="form-control" id="year" name = "Year">
+                    <option>Choose...</option>
+                    <option value = "2022" {% if year|int == 2022 %} selected {% endif %}>2022</option>
+                    <option value = "2021" {% if year|int == 2021 %} selected {% endif %}>2021</option>
+                    <option value = "2020" {% if year|int == 2020 %} selected {% endif %}>2020</option>
+                    <option value = "2019" {% if year|int == 2019 %} selected {% endif %}>2019</option>
+                    <option value = "2018" {% if year|int == 2018 %} selected {% endif %}>2018</option>
+                    <option value = "2017" {% if year|int == 2017 %} selected {% endif %}>2017</option>
+                    <option value = "2016" {% if year|int == 2016 %} selected {% endif %}>2016</option>
+                    <option value = "2015" {% if year|int == 2015 %} selected {% endif %}>2015</option>
+                    <option value = "2014" {% if year|int == 2014 %} selected {% endif %}>2014</option>
+                    <option value = "2013" {% if year|int == 2013 %} selected {% endif %}>2013</option>
+                    <option value = "2012" {% if year|int == 2012 %} selected {% endif %}>2012</option>
+                </select>
+                
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Maker</label>
+                <select id="inputState" class="form-control" id="maker" name = "Maker">
+                    <option selected>Choose...</option>
+                    <option value = "Toyota" {% if maker == 'Toyota' %} selected {% endif %}>Toyota</option>
+                    <option value = "Subaru" {% if maker == 'Subaru' %} selected {% endif %}>Subaru</option>
+                </select>
+               
+            </div>
+            <div class="form-group col-md-4">
+                <label for="customRange3" class="form-label">Mileage</label>
+                <input type="range" class="form-range form-control" value = {{mileage}} min="0" max="200000" step="1000" id="mileage" name = "Mileage" oninput="this.nextElementSibling.value = this.value">
+                <output>{{mileage}}</output>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Estimate</button>
+    </form>
+    <h3 id = 'test'>price is {{price|int}}</h3>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      </body>
+    </html>
     {%endblock%}
 
