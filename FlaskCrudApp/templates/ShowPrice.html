@@ -50,6 +50,12 @@
     <html lang="en">
         
       <head>
+        <style>
+            #resultPrice {
+                background-color: green;
+                opacity: 0.3;
+                }
+        </style>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,11 +92,11 @@
                 
             </div>
             <div class="form-group col-md-2">
-                <label for="inputZip">Maker</label>
+                <label for="inputZip">Model</label>
                 <select id="inputState" class="form-control" id="maker" name = "Maker">
                     <option selected>Choose...</option>
-                    <option value = "Toyota" {% if maker == 'Toyota' %} selected {% endif %}>Toyota</option>
-                    <option value = "Subaru" {% if maker == 'Subaru' %} selected {% endif %}>Subaru</option>
+                    <option value = "Toyota" {% if maker == 'Toyota' %} selected {% endif %}>Toyota 86</option>
+                    <option value = "Subaru" {% if maker == 'Subaru' %} selected {% endif %}>Subaru BRZ</option>
                 </select>
                
             </div>
@@ -101,9 +107,15 @@
             </div>
         </div>
         
-        <button type="submit" class="btn btn-primary">Estimate</button>
+        <button type="submit" class="btn btn-primary border border-primary h-25">Estimate</button>
     </form>
-    <h3 id = 'test'>price is {{price|int}}</h3>
+    <!-- <div class="align-items-cente" style="height: 50px; background-color: rgb(139, 201, 165);">
+        <h4 class="h-100 d-inline-block text-center align-middle" style="width: 300px;">Estimated Price: ${{price|int}}</h4>
+     </div> -->
+   
+      <div class="d-flex justify-content-center" style="height: 50px; background-color: rgb(139, 201, 165);">
+        <h4 class="p-2 bd-highlight">Estimated Price: {{ "${:,.2f}".format(price|int) }}</h4>
+      </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
