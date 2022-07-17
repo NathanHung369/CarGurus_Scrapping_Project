@@ -13,8 +13,17 @@
 <body>
     <h1>Car Price Estimator</h1>
     <form action="/submit" method='post'>
-        <lable for="Multiply"> Multiply by 2:  </lable>
-        <input type="text" id="multiply" name = "multiply" value = "0">
+        <lable for="Year"> Year:  </lable>
+        <input type="text" id="year" name="Year" >
+        <lable for="Mileage"> Mileage:  </lable>
+        <input type="text" id="mileage" name = "Mileage">
+
+        <label for="maker">Choose a maker:</label>
+
+        <select name="Maker" id="Maker" name = "Maker">
+        <option value="Toyota">Toyota</option>
+        <option value="Subaru">Subaru</option>
+        </select>
         <input type = "submit" value="Submit">
 
     </form>
