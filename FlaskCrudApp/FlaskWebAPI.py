@@ -10,9 +10,14 @@ import urllib.parse as up
 
 
 app = Flask(__name__)
-#route for index
+
+#route for home
 @app.route('/')
 def Index():
+    return render_template("home.html")
+#route for index
+@app.route('/Estimator')
+def Estimator():
     return render_template("index.html")
 #route for Resume
 @app.route('/Resume')
