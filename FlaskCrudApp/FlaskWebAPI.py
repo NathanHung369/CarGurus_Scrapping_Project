@@ -15,10 +15,23 @@ app = Flask(__name__)
 @app.route('/')
 def Index():
     return render_template("home.html")
-#route for index
-@app.route('/Estimator')
+
+#route for Estimator
+@app.route('/Project/Estimator')
 def Estimator():
     return render_template("index.html")
+
+#route for Design
+@app.route('/Project/Design')
+def Design():
+    return render_template("design.html")
+
+#route for Dashboard
+@app.route('/Project/Dashboard')
+def Dashboard():
+    return render_template("dashboard.html")
+
+
 #route for Resume
 @app.route('/Resume')
 def Resume():
@@ -71,7 +84,7 @@ def submit():
 
 
 #refresh with answer
-@app.route('/success/<price>, <year>, <mileage>, <maker>')
+@app.route('/Project/Estimator/success/<price>, <year>, <mileage>, <maker>')
 def success(price, year, mileage, maker):
     return render_template('showPrice.html', price = price, year = str(year), mileage = mileage, maker = maker)
 
