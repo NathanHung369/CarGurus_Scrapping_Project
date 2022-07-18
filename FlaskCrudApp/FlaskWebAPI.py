@@ -30,6 +30,11 @@ def Design():
 @app.route('/Project/Dashboard')
 def Dashboard():
     return render_template("dashboard.html")
+    
+#route for Jupyter Notebook
+@app.route('/Project/Jupyter')
+def Jupyter():
+    return render_template("Jupyter.html")
 
 
 #route for Resume
