@@ -61,10 +61,12 @@ def submit():
     #Connect to Database and convert relevent data into a DataFrame
     #Connect to Database
     parentDir = os.path.dirname(os.getcwd())
-    #print(parentDir)
-    path = parentDir+'\PSQLCredentials.json'
-    #path = parentDir+'/trader33drakor/PSQLCredentials.json'
-    #path = ("~/FlaskCrudApp/PSQLCredentials.json")
+    
+    #path = parentDir+'\PSQLCredentials.json'
+   
+    path = ("PSQLCredentials.json")
+
+
     cred = json.load(open(path))
     url = up.urlparse(cred[1]['connString'])
     conn = psycopg2.connect(database=url.path[1:], user=url.username, password=url.password, host=url.hostname, port=url.port )
@@ -98,4 +100,4 @@ def success(price, year, mileage, maker):
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = False)
