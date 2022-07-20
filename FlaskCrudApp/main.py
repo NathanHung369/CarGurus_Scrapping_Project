@@ -4,13 +4,13 @@ import os
 import json
 import psycopg2
 import urllib.parse as up
-
+from flask_talisman import Talisman
 
 
 
 
 app = Flask(__name__)
-
+Talisman(app, content_security_policy=None)
 #route for home
 @app.route('/')
 def Index():
