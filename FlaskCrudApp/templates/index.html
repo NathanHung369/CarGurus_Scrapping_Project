@@ -19,45 +19,43 @@
     <h1 class="text-center" style="color: gray">Car Price Estimator</h1>
 
 	<form action="/submit" method="post" class="p-5">
-  
-    <div class="form-row">
-        <div class="form-group col-md-2">
-            <label for="inputZip">Model</label>
-            <select id="inputState" class="form-control" id="maker" name = "Maker" required>
-                <option value = "" selected>Choose...</option>
-                <option value = "Toyota">Toyota 86</option>
-                <option value = "Subaru">Subaru BRZ</option>
-            </select>
-           
-        </div>
-        <div class="form-group col-md-2">
-            <label for="inputCity">Year</label>
-            <select id="inputState" class="form-control" id="year" name = "Year" required>
-                <option value = "" selected>Choose...</option>
-                <option value = "2022">2022</option>
-                <option value = "2021">2021</option>
-                <option value = "2020">2020</option>
-                <option value = "2019">2019</option>
-                <option value = "2018">2018</option>
-                <option value = "2017">2017</option>
-                <option value = "2016">2016</option>
-                <option value = "2015">2015</option>
-                <option value = "2014">2014</option>
-                <option value = "2013">2013</option>
-                <option value = "2012">2012</option>
-            </select>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="inputZip">Model</label>
+                <select id="inputState" class="form-control" id="maker" name = "Maker" required>
+                    <option value = "" selected>Choose...</option>
+                    <option value = "Toyota">Toyota 86</option>
+                    <option value = "Subaru">Subaru BRZ</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputCity">Year</label>
+                <select id="inputState" class="form-control" id="year" name = "Year" required>
+                    <option value = "" selected>Choose...</option>
+                    <option value = "2022">2022</option>
+                    <option value = "2021">2021</option>
+                    <option value = "2020">2020</option>
+                    <option value = "2019">2019</option>
+                    <option value = "2018">2018</option>
+                    <option value = "2017">2017</option>
+                    <option value = "2016">2016</option>
+                    <option value = "2015">2015</option>
+                    <option value = "2014">2014</option>
+                    <option value = "2013">2013</option>
+                    <option value = "2012">2012</option>
+                </select>
+                
+            </div>
             
+            <div class="form-group col-md-4">
+                <label for="customRange3" class="form-label">Mileage</label>
+                <input type="range" class="form-range form-control" min="0" max="200000" step="1000" id="mileage" name = "Mileage" oninput="this.nextElementSibling.value = this.value">
+                <output>50000</output>
+            </div>
         </div>
         
-        <div class="form-group col-md-4">
-            <label for="customRange3" class="form-label">Mileage</label>
-            <input type="range" class="form-range form-control" min="0" max="200000" step="1000" id="mileage" name = "Mileage" oninput="this.nextElementSibling.value = this.value">
-            <output>50000</output>
-        </div>
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Estimate</button>
-</form>
+        <button type="submit" class="btn btn-primary">Estimate</button>
+    </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -74,8 +74,8 @@ def submit():
     cursor.execute("select * from regression order by modelid desc limit 1")
     conn.commit() 
     data = cursor.fetchall()
-    yearcoef = int(data[0][2])
-    mileagecoef = int(data[0][3])
+    yearcoef = float(data[0][2])
+    mileagecoef = float(data[0][3])
     makercoef = float(data[0][4])
     intercept = float(data[0][5])
 
@@ -89,7 +89,10 @@ def submit():
             maker = float(1)
         
         result = (yearcoef * year) + (mileagecoef * mileage) + (maker * makercoef)+ intercept
-        
+        print(result)
+        print(year)
+        print(mileage)
+        print((mileagecoef))
         return redirect(url_for("success", price = result, year = year, mileage = mileage, maker = request.form['Maker'] ))
 
 

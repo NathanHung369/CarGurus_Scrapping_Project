@@ -27,7 +27,7 @@
        
         <h1 class="text-center" style="color: gray">Car Price Estimator</h1>
     
-        <form action="/submit" method="post" class="p-5">
+        <!-- <form action="/submit" method="post" class="p-5">
       
         <div class="form-row">
             <div class="form-group col-md-2">
@@ -65,6 +65,46 @@
         </div>
         
         <button type="submit" class="btn btn-primary border border-primary h-25">Estimate</button>
+    </form> -->
+
+
+    <form action="/submit" method="post" class="p-5">
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="inputZip">Model</label>
+                <select id="inputState" class="form-control" id="maker" name = "Maker" required>
+                    <option value = "" selected>Choose...</option>
+                    <option value = "Toyota" {% if maker == 'Toyota' %} selected {% endif %}>Toyota 86</option>
+                    <option value = "Subaru" {% if maker == 'Subaru' %} selected {% endif %}>Subaru BRZ</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputCity">Year</label>
+                <select id="inputState" class="form-control" id="year" name = "Year" required>
+                    <option value = "" selected>Choose...</option>
+                    <option value = "2022" {% if year|int == 2022 %} selected {% endif %}>2022</option>
+                    <option value = "2021" {% if year|int == 2021 %} selected {% endif %}>2021</option>
+                    <option value = "2020" {% if year|int == 2020 %} selected {% endif %}>2020</option>
+                    <option value = "2019" {% if year|int == 2019 %} selected {% endif %}>2019</option>
+                    <option value = "2018" {% if year|int == 2018 %} selected {% endif %}>2018</option>
+                    <option value = "2017" {% if year|int == 2017 %} selected {% endif %}>2017</option>
+                    <option value = "2016" {% if year|int == 2016 %} selected {% endif %}>2016</option>
+                    <option value = "2015" {% if year|int == 2015 %} selected {% endif %}>2015</option>
+                    <option value = "2014" {% if year|int == 2014 %} selected {% endif %}>2014</option>
+                    <option value = "2013" {% if year|int == 2013 %} selected {% endif %}>2013</option>
+                    <option value = "2012" {% if year|int == 2012 %} selected {% endif %}>2012</option>
+                </select>
+                
+            </div>
+            
+            <div class="form-group col-md-4">
+                <label for="customRange3" class="form-label" value = {{mileage}}>Mileage</label>
+                <input type="range" class="form-range form-control" min="0" max="200000" step="1000" id="mileage" value = {{mileage}} name = "Mileage" oninput="this.nextElementSibling.value = this.value">
+                <output>{{mileage|int}}</output>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Estimate</button>
     </form>
     <!-- <div class="align-items-cente" style="height: 50px; background-color: rgb(139, 201, 165);">
         <h4 class="h-100 d-inline-block text-center align-middle" style="width: 300px;">Estimated Price: ${{price|int}}</h4>
