@@ -3,16 +3,18 @@
 <html>
     {% extends 'layouts.html' %}
     {%block content%}
-<head>
+<!-- <head>
     
    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Contact Info</title>
+
+
     
 </head>
 
@@ -52,12 +54,183 @@
           </tr>
           
         </tbody>
-      </table>
+      </table> 
+      
 
       
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+</body> -->
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Contact Info</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+ 
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+      color: #566787;
+      background: #f5f5f5;
+      font-family: "Varela Round", sans-serif;
+  }
+  .form-control:focus {
+      border-color: #8464ca;
+      box-shadow: 0 0 8px #beace3;
+  }
+  .contact-modal {
+      width: 600px;
+      padding: 50px;
+      margin: 30px auto;
+  }
+  .contact-modal h4 {
+      font-size: 26px;
+      display: inline-block;
+  }
+  .contact-modal .form-control, .contact-modal .btn  {
+      min-height: 38px;
+      border-radius: 1px;
+      outline: none;
+  }
+  .contact-modal .btn-primary {
+      min-width: 100px;
+      background: #8464ca;
+      border: none;
+  }
+  .contact-modal .btn-primary:hover {
+      background: #6d45c0;
+  }
+  .contact-modal .btn-primary:focus {
+      box-shadow: 0 0 8px rgba(132, 100, 202, 0.6);
+  }
+  .contact-modal .btn-link {
+      color: #6d45c0;
+  }
+  .contact-modal label {
+      opacity: 0.9;
+      font-weight: normal;
+      font-size: 95%;
+  }
+  .contact-modal textarea {
+      resize: vertical;
+  }
+  .contact-modal.modal-dialog {
+      width: 480px;
+  }
+  .contact-modal .modal-header {
+      padding: 20px 35px 14px;
+  }
+  .contact-modal .modal-content {
+      border-radius: 1px;
+  }
+  .contact-modal .close {
+      position: absolute;
+      right: 35px;
+      top: 25px;
+  }
+  .contact-modal .modal-body {
+      padding: 20px 35px 35px;
+  }
+  .hint-text {
+      opacity: 0.8;
+  }
+  .trigger-btn {
+      display: inline-block;
+      margin: 100px auto;
+  }
+  </style>
+  </head>
+  <body>
+    
+    <br>
+    <br><br>
+    <br><br>
+    <br>
+
+
+    <div class="container justify-content-center">
+      <div class="row justify-content-center">
+        <div class="w-25">
+          Email:
+        </div>
+        <div class="w-25">
+          NathanHung369@outlook.com
+        </div>
+        
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      <div class="w-25">
+        Phone:
+      </div>
+      <div class="w-25">
+        (360) 851-9560
+      </div>
+      
+    </div>
+  </div>
+  <br>
+    <br>
+  <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      <div class="w-25">
+        LinkedIn:
+      </div>
+      <div class="w-25">
+        <a href="https://www.linkedin.com/in/nathanhung369/" class="link-primary" target="_blank">linkedin.com/in/nathanhung369</a>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+  <div class="text-center">
+    <!-- Button HTML (to Trigger Modal) -->
+    <button href="#myModal" type="button" class="btn btn-primary trigger-btn" data-toggle="modal">Send Nathan an email right now</button>
+  </div>
+  
+  <!-- Modal HTML -->
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog contact-modal">
+      <div class="modal-content">
+        <div class="modal-header">				
+          <h4 class="modal-title">Contact Nathan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+                  <form action="/examples/actions/confirmation.php" method="post">
+                      <div class="form-group">
+                          <label for="inputName">Name</label>
+                          <input type="text" class="form-control" id="inputName" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputEmail">Email</label>
+                          <input type="email" class="form-control" id="inputEmail" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputMessage">Message</label>
+                          <textarea class="form-control" id="inputMessage" rows="4" required></textarea>
+                      </div>
+                      <input type="submit" class="btn btn-primary" value="Send">
+                      <input type="button" class="btn btn-link" data-dismiss="modal" value="Cancel">
+                  </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+
 </html>
 {% endblock %}
