@@ -5,12 +5,13 @@ import json
 import psycopg2
 import urllib.parse as up
 from flask_talisman import Talisman
-
+import smtplib
+from email.message import EmailMessage
 
 
 
 app = Flask(__name__)
-#Talisman(app, content_security_policy=None)
+Talisman(app, content_security_policy=None)
 #route for home
 @app.route('/')
 def Index():
@@ -48,8 +49,40 @@ def github():
     return render_template("linkedIn.html")
 
 #route for Contact
-@app.route('/Contact')
+@app.route('/Contact', methods=['POST', 'GET'])
 def Contact():
+
+    def email_alert(subject, body, to):
+        msg = EmailMessage()
+        msg.set_content(body)
+        msg['subject'] = subject
+        msg['to'] = to
+        
+
+        user = 'nathan.project.alerts@gmail.com'
+        msg['from'] = user
+        password = 'okjgfadmakfznaaq'
+
+
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(user, password)
+        server.send_message(msg)
+        server.quit()
+
+
+    if request.method == 'POST':
+        name = request.form['Name']
+        email = request.form['Email']
+        message = request.form['Message']
+        print(name)
+        print(email)
+        print(message)
+        emailSubject = f"{name} emailed you from website"
+        emailBody = f"Name: {name} \nEmail: {email} \nMessage: {message}"
+        print(emailSubject)
+        print(emailBody)
+        email_alert(emailSubject, emailBody, 'nathanhung369@outlook.com')
     return render_template("Contact.html")
 
 

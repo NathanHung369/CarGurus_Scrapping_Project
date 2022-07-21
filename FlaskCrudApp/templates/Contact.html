@@ -141,18 +141,18 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
-                  <form action="/examples/actions/confirmation.php" method="post">
+                  <form action="/Contact" method="post">
                       <div class="form-group">
                           <label for="inputName">Name</label>
-                          <input type="text" class="form-control" id="inputName" required>
+                          <input type="text" class="form-control" id="inputName" name="Name"required>
                       </div>
                       <div class="form-group">
                           <label for="inputEmail">Email</label>
-                          <input type="email" class="form-control" id="inputEmail" required>
+                          <input type="email" class="form-control" id="inputEmail" name="Email" required>
                       </div>
                       <div class="form-group">
                           <label for="inputMessage">Message</label>
-                          <textarea class="form-control" id="inputMessage" rows="4" required></textarea>
+                          <textarea class="form-control" id="inputMessage" rows="4" name="Message" required></textarea>
                       </div>
                       <input type="submit" class="btn btn-primary" value="Send">
                       <input type="button" class="btn btn-link" data-dismiss="modal" value="Cancel">
