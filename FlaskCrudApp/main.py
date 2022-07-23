@@ -11,7 +11,7 @@ from email.message import EmailMessage
 
 
 app = Flask(__name__)
-#Talisman(app, content_security_policy=None)
+Talisman(app, content_security_policy=None)
 #route for home
 @app.route('/')
 def Index():
