@@ -17,6 +17,7 @@ import statsmodels.api as sm
 #Connect to Database
 parentDir = os.path.dirname(os.getcwd())
 #path = parentDir+'/PSQLCredentials.json'
+#path = 'C:/Users/Nathan/source/repos/CarGurus_Scrapping_Project/PSQLCredentials.json'
 path = parentDir+'/trader33drakor/PSQLCredentials.json'
 
 cred = json.load(open(path))
@@ -34,14 +35,19 @@ df[["Price"]] = df[["Price"]].apply(pd.to_numeric)
 df['Maker'] = df['Maker'].map({'Toyota 86': 0, 'Subaru BRZ': 1})
 df['Transmission'] = df['Transmission'].map({'Manual': 0, 'Automatic': 1})
 
-
+print(df)
 #Create model
 X = df[['Year', 'Mileage', 'Maker']]
 X = sm.add_constant(X)
 Y = df[["Price"]]
-mod = sm.OLS(Y, X)
+mod = sm.OLS(Y, X, missing='drop')
 res = mod.fit()
+
+
 model = res.params
+
+
+
 print(model)
 intercept = model[0]
 yearCoef = model[1]
