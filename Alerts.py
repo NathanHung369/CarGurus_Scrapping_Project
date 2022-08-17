@@ -29,6 +29,7 @@ if __name__ == '__main__':
     maxPrice = 30000
     maxMiles = 50000
     cred = json.load(open('PSQLCredentials.json'))
+    #cred = json.load(open('C:/Users/Nathan/source/repos/CarGurus_Scrapping_Project/PSQLCredentials.json'))
     url = up.urlparse(cred[0]['connString'])
     conn = psycopg2.connect(database=url.path[1:], user=url.username, password=url.password, host=url.hostname, port=url.port )
     cursor  = conn.cursor()
@@ -53,39 +54,45 @@ if __name__ == '__main__':
         year = df[1][i]
         mileage = df[2][i]
         price = df[3][i]
+        if price is None:
+                price = "unknown"
         transmission = df[7][i]
         color = df[8][i]
         maker = df[10][i]
-
-        listString += f"\n\t{year} {maker} for ${price:,}"
+        if price == "unknown":
+            listString += f"\n\t{year} {maker} for {price}"
+        else:
+            listString += f"\n\t{year} {maker} for ${price:,}"
         listString += f"\n\t\tDetails:"
         listString += f"\n\t\t\tMileage: {mileage}"
         listString += f"\n\t\t\tTransmission: {transmission}"
         listString += f"\n\t\t\tColor: {color}\n\n"
         listings.append(listString)
-
-        if mileage < maxMiles and price < maxPrice:
-            listString = ""
-            id = df[0][i]
-            
-            year = df[1][i]
-            mileage = df[2][i]
-            price = df[3][i]
-            transmission = df[7][i]
-            color = df[8][i]
-            maker = df[10][i]
-            if maker == "Subaru":
-                link = "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?sourceContext=carGurusHomePageModel&entitySelectingHelper.selectedEntity=d2134&zip=98006#listing=" + str(id) 
-            else:
-                link = "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?zip=98006&showNegotiable=true&sortDir=ASC&sourceContext=carGurusHomePageModel&distance=50&sortType=DEAL_SCORE&entitySelectingHelper.selectedEntity=d2436#listing=" + str(id)
-            listString += f"\n\t{year} {maker} for ${price:,}"
-            listString += f"\n\t\tDetails:"
-            listString += f"\n\t\t\tMileage: {mileage}"
-            listString += f"\n\t\t\tTransmission: {transmission}"
-            listString += f"\n\t\t\tColor: {color}\n\n"
-            listString += f"\n\tHere is the Link:\n\t" + link 
-            featured.append(listString)
-            featuredCount += 1
+        if price != "unknown":
+            if mileage < maxMiles and price < maxPrice:
+                listString = ""
+                id = df[0][i]
+                
+                year = df[1][i]
+                mileage = df[2][i]
+                price = df[3][i]
+                
+                
+                transmission = df[7][i]
+                color = df[8][i]
+                maker = df[10][i]
+                if maker == "Subaru":
+                    link = "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?sourceContext=carGurusHomePageModel&entitySelectingHelper.selectedEntity=d2134&zip=98006#listing=" + str(id) 
+                else:
+                    link = "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?zip=98006&showNegotiable=true&sortDir=ASC&sourceContext=carGurusHomePageModel&distance=50&sortType=DEAL_SCORE&entitySelectingHelper.selectedEntity=d2436#listing=" + str(id)
+                listString += f"\n\t{year} {maker} for ${price:,}"
+                listString += f"\n\t\tDetails:"
+                listString += f"\n\t\t\tMileage: {mileage}"
+                listString += f"\n\t\t\tTransmission: {transmission}"
+                listString += f"\n\t\t\tColor: {color}\n\n"
+                listString += f"\n\tHere is the Link:\n\t" + link 
+                featured.append(listString)
+                featuredCount += 1
         
     cursor.close()
     conn.close()
