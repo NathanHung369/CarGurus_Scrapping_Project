@@ -21,6 +21,7 @@ http = urllib3.PoolManager()
 #Connect to Database
 
 cred = json.load(open('PSQLCredentials.json'))
+#cred = json.load(open('C:/Users/Nathan/source/repos/CarGurus_Scrapping_Project/PSQLCredentials.json'))
 for c in range(0, 2):
     print(c)
 
